@@ -22,10 +22,10 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/" element={<Home />} />
-          <Route path="/*" element={<NotFound />} />
+          <Route path="*" element={<NotFound />} />
+          <Route path="/create-profile" element={<CreateProfile />} />
         </Route>
         <Route element={<Header_after />}>
-          <Route path="/create-profile" element={<CreateProfile />} />
           <Route path="/add-experience" element={<AddExperience />} />
           <Route path="/add-education" element={<AddEducation />} />
           <Route path="/dashboard" element={<Dashboard />} />
@@ -35,7 +35,7 @@ function App() {
             element={<DashboardCreate />}
           />
           <Route path="/profiles" element={<Profiles />} />
-          {/* <Route path="/:userId" element={<Profile />} /> */}
+          <Route path="/profiles/user/:userId" element={<Profile />} />
         </Route>
       </Routes>
     </div>

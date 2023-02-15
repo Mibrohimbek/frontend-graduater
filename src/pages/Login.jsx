@@ -2,7 +2,6 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import Header from "../Components/Header";
 
 const Login = () => {
   const [values, setValues] = useState({
@@ -21,7 +20,6 @@ const Login = () => {
     e.preventDefault();
 
     // Validations ...
-
     try {
       // Login
       let {
@@ -29,14 +27,12 @@ const Login = () => {
       } = await axios.post("/auth", values);
 
       localStorage.setItem("token", token);
-      axios.defaults.headers.common["x-auth-token"] = `Bearer ${token}`;
+      axios.defaults.headers.common["x-auth-token"] = `${token}`;
 
       toast(message, { type: "success" });
-
       navigate("/dashboard");
     } catch (error) {
-      toast("Not Found", { type: "error" });
-      console.log(error);
+      toast(error.response.data.errors[0].msg, { type: "error" });
     }
   }
 

@@ -1,7 +1,13 @@
 import React from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 
 const Header_after = () => {
+  let navigate = useNavigate();
+
+  function handleClick() {
+    localStorage.removeItem("token");
+    navigate("/login");
+  }
   return (
     <div>
       <header>
@@ -18,29 +24,36 @@ const Header_after = () => {
             <ul className="list-unstyled d-flex gap-4 m-0">
               <li>
                 <Link
-                  className="text-decoration-none text-light"
+                  className="text-decoration-none nav-item text-light"
                   to="/profiles"
                 >
                   Developers
                 </Link>
               </li>
               <li>
-                <Link className="text-decoration-none text-light" to="/posts">
+                <Link
+                  className="text-decoration-none nav-item text-light"
+                  to="/posts"
+                >
                   Posts
                 </Link>
               </li>
               <li>
                 <Link
-                  className="text-decoration-none text-light "
+                  className="text-decoration-none nav-item text-light "
                   to="/register"
                 >
                   Dashboard
                 </Link>
               </li>
               <li>
-                <Link className="text-decoration-none text-light " to="/login">
+                <button
+                  className="text-decoration-none logout-btn text-light bg-danger border-0"
+                  to="/login"
+                  onClick={handleClick}
+                >
                   Logout
-                </Link>
+                </button>
               </li>
             </ul>
           </div>

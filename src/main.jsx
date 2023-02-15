@@ -10,7 +10,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 axios.defaults.baseURL = "https://nt-devconnector.onrender.com/api";
 axios.defaults.headers.common["Content-Type"] = "application/json";
 let token = localStorage.getItem("token");
-if (token) axios.defaults.headers.common["x-auth-token"] = `Bearer ${token}`;
+if (token) axios.defaults.headers.common["x-auth-token"] = `${token}`;
 
 // styles
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -20,10 +20,13 @@ import "react-toastify/dist/ReactToastify.css";
 
 // Redux
 import { Provider } from "react-redux";
+import store from "./store";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Router>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
     <ToastContainer theme="colored" />
   </Router>
 );

@@ -12,10 +12,10 @@ const Header = () => {
             </Link>
           </div>
           <div className="right">
-            <ul className="list-unstyled d-flex gap-3 m-0">
+            <ul className="list-unstyled d-flex gap-5 m-0">
               <li>
                 <Link
-                  className="text-decoration-none text-light"
+                  className="text-decoration-none nav-item text-light"
                   to="/profiles"
                 >
                   Developers
@@ -23,14 +23,14 @@ const Header = () => {
               </li>
               <li>
                 <Link
-                  className="text-decoration-none text-light "
+                  className="text-decoration-none nav-item text-light "
                   to="/register"
                 >
                   Register
                 </Link>
               </li>
               <li>
-                <Link className="text-decoration-none text-light " to="/login">
+                <Link className="text-decoration-none nav-item text-light " to="/login">
                   Login
                 </Link>
               </li>

@@ -1,11 +1,15 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import axios from "axios";
 
 const AddExperience = () => {
+  let navigate = useNavigate();
+
   const [values, setValues] = useState({
-    job_title: "",
+    title: "",
     company: "",
-    date_from: "",
+    from: "",
     date_to: "",
     location: "",
     job_description: "",
@@ -18,6 +22,21 @@ const AddExperience = () => {
     }));
   }
 
+  function handleFormSubmit(e) {
+    e.preventDefault();
+
+    async function createExp() {
+      try {
+        let { data } = await axios.put("/profile/experience", values);
+        navigate("/dashboard");
+        toast("Experience added", { type: "success" });
+      } catch (error) {
+        return toast(error.response.data.errors[0].msg, { type: "error" });
+      }
+    }
+    createExp();
+  }
+
   return (
     <>
       <div className="container create-profil">
@@ -25,23 +44,21 @@ const AddExperience = () => {
         <h5 className="text-center mt-3 mb-4">
           Add any developer/programming positions that you have had in the past
         </h5>
-        <form className="w-75 ms-auto me-auto">
+        <form onSubmit={handleFormSubmit} className="w-75 ms-auto me-auto">
           <p>* = required field</p>
           <div className="row m-0">
             <input
               className="form-control mb-4"
               type="text"
               placeholder="* Job Title"
-              required
-              value={values.job_title}
+              value={values.title}
               onChange={handleInputChange}
-              name="job_title"
+              name="title"
             />
             <input
               className="form-control mb-4"
               type="text"
               placeholder="*Company"
-              required
               value={values.company}
               onChange={handleInputChange}
               name="company"
@@ -54,13 +71,13 @@ const AddExperience = () => {
               onChange={handleInputChange}
               name="location"
             />
-            <label htmlFor="date_from">From Date</label>
+            <label htmlFor="from">From Date</label>
             <input
               type="date"
-              name="date_from"
-              id="date_from"
+              name="from"
+              id="from"
               className="form-control mt-1 mb-4"
-              value={values.date_from}
+              value={values.from}
               onChange={handleInputChange}
             />
             <label htmlFor="date_to">To Date</label>

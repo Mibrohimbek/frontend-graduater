@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Header from "../Components/Header";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
@@ -31,14 +30,14 @@ const Register = () => {
       } = await axios.post("/users", values);
 
       localStorage.setItem("token", token);
-      axios.defaults.headers.common["x-auth-token"] = `Bearer ${token}`;
+      axios.defaults.headers.common["x-auth-token"] = `${token}`;
 
       toast(message, { type: "success" });
 
       navigate("/dashboard-create-profile");
     } catch (error) {
       console.log(error);
-      toast(error.message, { type: "error" });
+      toast(error.response.data.errors[0].msg, { type: "error" });
     }
   }
 

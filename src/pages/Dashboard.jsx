@@ -1,20 +1,29 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { toast } from "react-toastify";
 
 const Dashboard = () => {
+  const { user } = useSelector((store) => store);
+
   let navigate = useNavigate();
 
   function handleDelete(e) {
     e.preventDefault();
 
+    async function deleteProfil() {
+      let { data } = await axios.delete("/profile");
+    }
+    delete toast("Account has been deleted", { type: "error" });
     localStorage.removeItem("token");
-    navigate('/login')
+    navigate("/login");
+    deleteProfil();
   }
   return (
     <div>
       <div className="container">
         <h3 className="display-3 fw-bold mt-5">Dashboard</h3>
-        <p className="mt-3 display-6"> Welcome ibrohim</p>
+        <p className="mt-3 display-6"> Welcome {user.name}</p>
         <Link
           className="text-decoration-none text-dark px-4 py-2 dashboard-links mt-5 d-d-inline-block"
           to="/edit-profile"
@@ -41,11 +50,12 @@ const Dashboard = () => {
               <th scope="col">Company</th>
               <th scope="col">Title</th>
               <th scope="col">Years</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <th scope="row"></th>
+              {/* <th scope="row"></th> */}
               <td></td>
               <td></td>
               <td></td>
@@ -62,11 +72,12 @@ const Dashboard = () => {
               <th scope="col">School</th>
               <th scope="col">Degree</th>
               <th scope="col">Years</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <th scope="row"></th>
+              {/* <th scope="row"></th> */}
               <td></td>
               <td></td>
               <td></td>

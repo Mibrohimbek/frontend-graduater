@@ -14,10 +14,18 @@ body {
             border-bottom: 1px solid aqua;
             padding: 8px 40px;
 
-            .logo {
+            .logo,
+            .nav-item {
                 &:hover {
                     color: rgb(23, 162, 184) !important;
+                    transition: .3s;
                 }
+            }
+
+            .logout-btn:hover {
+                color: red !important;
+                background: none !important;
+                transition: .2s;
             }
 
 
@@ -99,6 +107,60 @@ body {
         padding: 10px 20px;
     }
 
+    .post-date {
+        color: gray;
+        font-size: 14px;
+    }
+
+    .dsc-btn {
+        background-color: rgb(23, 162, 184);
+        padding: 10px;
+
+    }
+
+    .user-main-info {
+        background-color: rgb(23, 162, 184);
+        padding-bottom: 60px;
+    }
+
+    .user-bio {
+        background-color: #f3f3f3;
+        padding: 30px 0;
+        border: 1px solid rgb(195, 184, 184);
+
+        p {
+            font-size: 20px;
+        }
+    }
+
+    .edu-exp,
+    .github,
+    .user-bio {
+        h4 {
+            color: rgb(23, 162, 184);
+            font-size: 30px;
+        }
+    }
+
+    .repo-name {
+        color: rgb(23, 162, 184);
+        font-size: 20px ;
+    }
+
+    .repo-stars{
+        background-color: rgb(23, 162, 184);
+    }
+
+    .repo-forks{
+        background-color: #f3f3f3;
+        border: 1px solid rgb(75, 72, 72);
+    }
+
+    .exp,.edu{
+        border: 1px solid rgb(195, 184, 184);
+    }
+
+
 
 
 }
@@ -117,6 +179,7 @@ h3 {
     height: 120px;
     -webkit-animation: spin 2s linear infinite;
     animation: spin 2s linear infinite;
+    margin-top: 250px;
 }
 
 @-webkit-keyframes spin {

@@ -1,8 +1,8 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Header from "../Components/Header";
 import { toast } from "react-toastify";
 import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
 
 const CreateProfile = () => {
   let statuses = [
@@ -18,11 +18,11 @@ const CreateProfile = () => {
   ];
 
   const [values, setValues] = useState({
-    status: "*Select professional status",
+    status: "",
     company: "",
     website: "",
     location: "",
-    skill: "",
+    skills: "",
     github: "",
     bio: "",
     twitter: "",
@@ -74,34 +74,24 @@ const CreateProfile = () => {
     }));
   }
 
+  const { user } = useSelector((store) => store);
+
+  const dispatch = useDispatch();
+
   async function formSubmit(e) {
     e.preventDefault();
 
-    if (values.status === "*Select professional status")
-      toast("Status is required", { type: "error" });
-
-    if (values.skill === "") toast("Skills are required", { type: "error" });
-
-    if (
-      values.status !== "*Select professional status" &&
-      values.skill !== ""
-    ) {
-      try {
-        let {
-          data: { token },
-        } = await axios.post("/profile", values);
-        console.log(token);
-      } catch (error) {
-        console.log(error);
-      }
+    try {
+      let { data } = await axios.post("/profile", values);
       navigate("/dashboard");
       toast("Profile created", { type: "success" });
+    } catch (error) {
+      toast(error.response.data.errors[0].msg, { type: "error" });
     }
   }
 
   return (
     <>
-      <Header />
       <div className="container create-profil">
         <h3 className="text-center mt-5">Create Your Profile</h3>
         <h5 className="text-center mt-3 mb-4">
@@ -161,9 +151,9 @@ const CreateProfile = () => {
               className="form-control"
               type="text"
               placeholder="*Skills"
-              value={values.skill}
+              value={values.skills}
               onChange={handleInputChange}
-              name="skill"
+              name="skills"
             />
             <p className="mt-1 mb-4">
               Please use comma separated values (eg. HTML,CSS,JavaScript,PHP)
