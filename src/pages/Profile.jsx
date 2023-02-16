@@ -29,9 +29,6 @@ const Profile = () => {
   }
   getGithub();
 
-
-
-
   return (
     <div className="container mb-5">
       {profile.length === 0 ? (

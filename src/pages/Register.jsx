@@ -36,7 +36,6 @@ const Register = () => {
 
       navigate("/dashboard-create-profile");
     } catch (error) {
-      console.log(error);
       toast(error.response.data.errors[0].msg, { type: "error" });
     }
   }

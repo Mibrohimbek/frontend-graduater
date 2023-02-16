@@ -1,7 +1,7 @@
-import axios from "axios";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import axios from "axios";
 
 const Posts = () => {
   const [myId, setmyId] = useState("");

@@ -14,6 +14,7 @@ import Profile from "./pages/Profile";
 import Header_after from "./Components/Header-afrer";
 import Posts from "./pages/Posts";
 import Post from "./pages/Post";
+import EditProfile from "./pages/Edit-Profile";
 
 function App() {
   return (
@@ -25,17 +26,18 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="*" element={<NotFound />} />
           <Route path="/create-profile" element={<CreateProfile />} />
+          <Route
+            path="/dashboard-create-profile"
+            element={<DashboardCreate />}
+          />
         </Route>
         <Route element={<Header_after />}>
           <Route path="/add-experience" element={<AddExperience />} />
           <Route path="/add-education" element={<AddEducation />} />
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/posts" element={<Posts/>}/>
-          <Route
-            path="/dashboard-create-profile"
-            element={<DashboardCreate />}
-          />
-          <Route path="/post/:postId" element={<Post/>}/>
+          <Route path="/posts" element={<Posts />} />
+          <Route path="/edit-profile" element={<EditProfile />} />
+          <Route path="/post/:postId" element={<Post />} />
           <Route path="/profiles" element={<Profiles />} />
           <Route path="/profiles/user/:userId" element={<Profile />} />
         </Route>

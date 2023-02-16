@@ -1,12 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
+import axios from "axios";
 
 const Dashboard = () => {
-  const { user } = useSelector((store) => store);
-
   let navigate = useNavigate();
+  let [myInfo, setmyInfo] = useState();
+
+  async function getMe() {
+    try {
+      let { data } = await axios.get("/profile/me");
+      setmyInfo(data);
+      // console.log(data?.experience[0]?.from);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  let date = myInfo?.experience[0]?.from.split("T")[0];
+  // console.log(date);
+  getMe();
 
   function handleDelete(e) {
     e.preventDefault();
@@ -14,16 +27,20 @@ const Dashboard = () => {
     async function deleteProfil() {
       let { data } = await axios.delete("/profile");
     }
-    delete toast("Account has been deleted", { type: "error" });
-    localStorage.removeItem("token");
-    navigate("/login");
-    deleteProfil();
+    let text = "Are you sure?";
+    if (confirm(text) == true) {
+      delete toast("Account has been deleted", { type: "error" });
+      localStorage.removeItem("token");
+      navigate("/login");
+      deleteProfil();
+    }
   }
+
   return (
     <div>
       <div className="container">
         <h3 className="display-3 fw-bold mt-5">Dashboard</h3>
-        <p className="mt-3 display-6"> Welcome {user.name}</p>
+        <p className="mt-3 display-6"> Welcome {myInfo?.user?.name}</p>
         <Link
           className="text-decoration-none text-dark px-4 py-2 dashboard-links mt-5 d-d-inline-block"
           to="/edit-profile"
@@ -54,13 +71,31 @@ const Dashboard = () => {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              {/* <th scope="row"></th> */}
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
+            {/* {myInfo?.experience !== undefined
+              ? myInfo?.experience.map((ex) => {
+                  // <tr>
+                  //   <td>{ex.company}</td>
+                  //   <td scope="row">{myInfo?.experience[0]?.title}</td>
+                  //   <td>
+                  //     {myInfo?.experience[0].from.split("T")[0]}-
+                  //     {myInfo?.experience[0]?.current === true ? (
+                  //       <p className="d-inline-block">now</p>
+                  //     ) : (
+                  //       <p>{myInfo?.experience[0].to.split("T")[0]}</p>
+                  //     )}
+                  //   </td>
+                  //   <td>
+                  //     <button className="text-light bg-danger border-0 px-3 py-2">
+                  //       Delete
+                  //     </button>
+                  //   </td>
+                  // </tr>;
+                })
+              : ""} */}
+
+            {/* {myInfo?.experience !== undefined
+              ? map?.experience.map((ex) => <div>yes</div>)
+              : "bad"} */}
           </tbody>
         </table>
 

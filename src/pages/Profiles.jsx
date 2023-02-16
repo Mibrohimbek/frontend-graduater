@@ -6,8 +6,12 @@ const Profiles = () => {
   let [profiles, setProfiles] = useState([]);
 
   async function getProfils() {
-    let { data } = await axios.get("/profile");
-    setProfiles(data);
+    try {
+      let { data } = await axios.get("/profile");
+      setProfiles(data);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   getProfils();
