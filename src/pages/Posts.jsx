@@ -144,7 +144,7 @@ const Posts = () => {
               </div>
               <div className="info">
                 <h6>{post.text}</h6>
-                <p className="post-date mt-4">Posted on {post.date}</p>
+                <p className="post-date mt-4">Posted on {post.date?.split('T')[0]}</p>
                 <div>
                   <button
                     onClick={() => handleLike(post._id)}

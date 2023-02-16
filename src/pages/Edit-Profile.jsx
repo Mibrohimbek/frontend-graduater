@@ -79,7 +79,7 @@ const EditProfile = () => {
     try {
       let { data } = await axios.post("/profile", values);
       navigate("/dashboard");
-      toast("Profile created", { type: "success" });
+      toast("Profile edited", { type: "success" });
     } catch (error) {
       {
         error.response.data.errors.map((error) =>
@@ -91,7 +91,7 @@ const EditProfile = () => {
 
   return (
     <>
-      <div className="container create-profil">
+      <div className="container w-75 create-profil">
         <h3 className="text-center mt-5">Edit Your Profile</h3>
         <h5 className="text-center mt-3 mb-4">
           Let's get some information to make your

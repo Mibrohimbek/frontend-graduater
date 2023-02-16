@@ -85,6 +85,7 @@ const AddEducation = () => {
           <input
             type="date"
             name="to"
+            required
             className="form-control mt-1 mb-4"
             value={values.to}
             onChange={handleInputChange}

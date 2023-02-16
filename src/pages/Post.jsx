@@ -134,7 +134,9 @@ const Post = () => {
             </div>
             <div className="info">
               <h6>{post.text}</h6>
-              <p className="post-date mt-4">Posted on {post.date}</p>
+              <p className="post-date mt-4">
+                Posted on {post.date?.split("T")[0]}
+              </p>
               <div>
                 <button
                   onClick={() => handleLike(post._id)}
@@ -211,7 +213,7 @@ const Post = () => {
                     className="mt-4 mb-2"
                     style={{ color: "gray", fontSize: "14px" }}
                   >
-                    Posted on {comment.date}
+                    Posted on {comment.date?.split("T")[0]}
                   </p>
                   {comment.user === myId ? (
                     <button

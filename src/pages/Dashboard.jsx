@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
@@ -6,22 +6,24 @@ import axios from "axios";
 const Dashboard = () => {
   let navigate = useNavigate();
   let [myInfo, setmyInfo] = useState();
+  let [myExp, setExp] = useState();
+  let [myEdu, setEdu] = useState();
 
   async function getMe() {
     try {
       let { data } = await axios.get("/profile/me");
       setmyInfo(data);
-      // console.log(data?.experience[0]?.from);
+      setEdu(data.education);
+      setExp(data.experience);
     } catch (error) {
       console.log(error);
+      navigate("/create-profile");
     }
   }
 
-  let date = myInfo?.experience[0]?.from.split("T")[0];
-  // console.log(date);
   getMe();
 
-  function handleDelete(e) {
+  function handleDeleteAcc(e) {
     e.preventDefault();
 
     async function deleteProfil() {
@@ -33,6 +35,24 @@ const Dashboard = () => {
       localStorage.removeItem("token");
       navigate("/login");
       deleteProfil();
+    }
+  }
+
+  async function handleDeleteExp(id) {
+    try {
+      let res = await axios.delete(`profile/experience/${id}`);
+      toast("Experience removed", { type: "success" });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function handleDeleteEdu(id) {
+    try {
+      let res = await axios.delete(`profile/education/${id}`);
+      toast("Education removed", { type: "success" });
+    } catch (error) {
+      console.log(error);
     }
   }
 
@@ -71,31 +91,24 @@ const Dashboard = () => {
             </tr>
           </thead>
           <tbody>
-            {/* {myInfo?.experience !== undefined
-              ? myInfo?.experience.map((ex) => {
-                  // <tr>
-                  //   <td>{ex.company}</td>
-                  //   <td scope="row">{myInfo?.experience[0]?.title}</td>
-                  //   <td>
-                  //     {myInfo?.experience[0].from.split("T")[0]}-
-                  //     {myInfo?.experience[0]?.current === true ? (
-                  //       <p className="d-inline-block">now</p>
-                  //     ) : (
-                  //       <p>{myInfo?.experience[0].to.split("T")[0]}</p>
-                  //     )}
-                  //   </td>
-                  //   <td>
-                  //     <button className="text-light bg-danger border-0 px-3 py-2">
-                  //       Delete
-                  //     </button>
-                  //   </td>
-                  // </tr>;
-                })
-              : ""} */}
-
-            {/* {myInfo?.experience !== undefined
-              ? map?.experience.map((ex) => <div>yes</div>)
-              : "bad"} */}
+            {myExp?.map((exp, index) => (
+              <tr key={index}>
+                <td>{exp.company}</td>
+                <td>{exp.title}</td>
+                <td>
+                  {exp?.from?.split("T")[0]} -{" "}
+                  {exp.current === true ? "Now" : exp?.to?.split("T")[0]}
+                </td>
+                <td>
+                  <button
+                    onClick={() => handleDeleteExp(exp._id)}
+                    className="text-light bg-danger border-0 px-3 py-2"
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
 
@@ -111,18 +124,29 @@ const Dashboard = () => {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              {/* <th scope="row"></th> */}
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
+            {myEdu?.map((edu, index) => (
+              <tr key={index}>
+                <td>{edu.school}</td>
+                <td>{edu.degree}</td>
+                <td>
+                  {edu.from?.split("T")[0]} -{" "}
+                  {edu.current === true ? "Now" : edu.to?.split("T")[0]}
+                </td>
+                <td>
+                  <button
+                    onClick={() => handleDeleteEdu(edu._id)}
+                    className="text-light bg-danger border-0 px-3 py-2"
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
 
         <button
-          onClick={handleDelete}
+          onClick={handleDeleteAcc}
           className="bg-danger text-light border-0 px-4 py-3 mb-5"
         >
           Delete My Account

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
@@ -10,7 +10,7 @@ const AddExperience = () => {
     title: "",
     company: "",
     from: "",
-    date_to: "",
+    to: "",
     location: "",
     job_description: "",
   });
@@ -80,13 +80,18 @@ const AddExperience = () => {
               value={values.from}
               onChange={handleInputChange}
             />
-            <label htmlFor="date_to">To Date</label>
+            {/* <div>
+              <input name="current" value={values.current} onChange={handleInputChange} type="checkbox" className="" placeholder="" />
+              <p className="d-inline-block ms-2">Current Job</p>
+            </div> */}
+            <label htmlFor="to">To Date</label>
             <input
+              required
               type="date"
-              name="date_to"
-              id="date_to"
+              name="to"
+              id="to"
               className="form-control mt-1 mb-4"
-              value={values.date_to}
+              value={values.to}
               onChange={handleInputChange}
             />
             <textarea
