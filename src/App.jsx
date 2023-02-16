@@ -13,6 +13,7 @@ import Profiles from "./pages/Profiles";
 import Profile from "./pages/Profile";
 import Header_after from "./Components/Header-afrer";
 import Posts from "./pages/Posts";
+import Post from "./pages/Post";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
             path="/dashboard-create-profile"
             element={<DashboardCreate />}
           />
+          <Route path="/post/:postId" element={<Post/>}/>
           <Route path="/profiles" element={<Profiles />} />
           <Route path="/profiles/user/:userId" element={<Profile />} />
         </Route>

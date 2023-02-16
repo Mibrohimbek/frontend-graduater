@@ -1,35 +1,44 @@
 import axios from "axios";
-import React, { useEffect } from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const Posts = () => {
+  const [myId, setmyId] = useState("");
   let [posts, setPosts] = useState([]);
   let [values, setValues] = useState({
     post: "",
   });
 
+  // get all posts
   async function getPosts() {
-    let { data } = await axios.get("/posts");
-    setPosts(data);
+    try {
+      let { data } = await axios.get("/posts");
+      setPosts(data);
+    } catch (error) {
+      toast(error.response.data.msg, { type: "error" });
+    }
   }
+
+  getPosts();
 
   function handleFormSubmit(e) {
     e.preventDefault();
 
-    if (values.post === "") {
-      toast("Text is required", { type: "error" });
-    } else {
-      async function post() {
+    // post a post
+    async function post() {
+      try {
         let { data } = await axios.post("/posts", { text: values.post });
+        values.post = "";
         toast("Post created", { type: "success" });
+      } catch (error) {
+        toast(error.response.data.errors[0].msg, { type: "error" });
       }
-      post();
-      values.post = "";
     }
+    post();
   }
 
+  // input change
   function handleInputChange(e) {
     setValues((oldValues) => ({
       ...oldValues,
@@ -37,15 +46,50 @@ const Posts = () => {
     }));
   }
 
-  getPosts();
+  // like
+  async function handleLike(id) {
+    try {
+      let res = await axios.put(`/posts/like/${id}`);
+    } catch (error) {
+      toast(error.response.data.msg, { type: "error" });
+    }
+  }
+
+  // dislike
+  async function handleDislike(id) {
+    try {
+      let res = await axios.put(`/posts/unlike/${id}`);
+    } catch (error) {
+      toast(error.response.data.msg, { type: "error" });
+    }
+  }
+
+  // my info
+  async function getMe() {
+    try {
+      let { data } = await axios.get(`/profile/me`);
+      setmyId(data.user._id);
+    } catch (error) {
+      toast(error.response.data.msg, { type: "error" });
+    }
+  }
+  getMe();
+
+  // delete Post
+  async function handleDelete(id) {
+    try {
+      let res = await axios.delete(`/posts/${id}`);
+      toast("Post has been deleted", { type: "success" });
+    } catch (error) {
+      toast(error.response.data.msg, { type: "error" });
+    }
+  }
 
   return (
     <div className="container">
       {posts.length === 0 ? (
         <div className="d-flex">
-          <div
-            className="loader ms-auto me-auto"
-          ></div>
+          <div className="loader ms-auto me-auto"></div>
         </div>
       ) : (
         <>
@@ -102,21 +146,45 @@ const Posts = () => {
                 <h6>{post.text}</h6>
                 <p className="post-date mt-4">Posted on {post.date}</p>
                 <div>
-                  <button className="border-0 me-2 py-2 px-3">
+                  <button
+                    onClick={() => handleLike(post._id)}
+                    className="border-0 me-3 py-2 px-3"
+                  >
                     <img
                       className="me-1"
                       style={{ width: "20px" }}
                       src="/like.svg"
-                      alt=""
+                      alt="like"
                     />
-                    {post?.likes?.length}
+                    {post?.likes?.length === 0 ? "" : post.likes.length}
                   </button>
-                  <button className="border-0 py-2 px-3">
-                    <img style={{ width: "20px" }} src="/dislike.svg" alt="" />
+                  <button
+                    onClick={() => handleDislike(post._id)}
+                    className="border-0 me-3 py-2 px-3"
+                  >
+                    <img
+                      style={{ width: "20px" }}
+                      src="/dislike.svg"
+                      alt="dislike"
+                    />
                   </button>
-                  <Link className="dsc-btn text-light ms-2 text-decoration-none">
-                    Discussion
+                  <Link
+                    to={`/post/${post._id}`}
+                    className="dsc-btn text-light ms-2 text-decoration-none"
+                  >
+                    Discussion{" "}
+                    {post.comments.length !== 0 ? post.comments.length : ""}
                   </Link>
+                  {myId === post.user ? (
+                    <button
+                      onClick={() => handleDelete(post._id)}
+                      className="bg-danger border-0 fw-bold px-4 ms-3 py-2 text-light"
+                    >
+                      X
+                    </button>
+                  ) : (
+                    ""
+                  )}
                 </div>
               </div>
             </div>

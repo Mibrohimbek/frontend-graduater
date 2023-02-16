@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
-import { useDispatch, useSelector } from "react-redux";
 
 const CreateProfile = () => {
   let statuses = [
@@ -74,10 +73,6 @@ const CreateProfile = () => {
     }));
   }
 
-  const { user } = useSelector((store) => store);
-
-  const dispatch = useDispatch();
-
   async function formSubmit(e) {
     e.preventDefault();
 
@@ -86,7 +81,11 @@ const CreateProfile = () => {
       navigate("/dashboard");
       toast("Profile created", { type: "success" });
     } catch (error) {
-      toast(error.response.data.errors[0].msg, { type: "error" });
+      {
+        error.response.data.errors.map((error) =>
+          toast(error.msg, { type: "error" })
+        );
+      }
     }
   }
 

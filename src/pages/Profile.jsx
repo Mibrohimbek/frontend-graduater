@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 
 const Profile = () => {
@@ -9,9 +8,14 @@ const Profile = () => {
   const [repos, setRepos] = useState([]);
 
   async function createProfile() {
-    let { data } = await axios.get(`/profile/user/${userId}`);
-    setProfile(data);
+    try {
+      let { data } = await axios.get(`/profile/user/${userId}`);
+      setProfile(data);
+    } catch (error) {
+      console.log(error);
+    }
   }
+  createProfile();
 
   async function getGithub() {
     try {
@@ -23,9 +27,10 @@ const Profile = () => {
       console.log(error);
     }
   }
-
-  createProfile();
   getGithub();
+
+
+
 
   return (
     <div className="container mb-5">
@@ -98,9 +103,8 @@ const Profile = () => {
                   </p>
                 </>
               )}
-
-              {/* <p>{}</p> */}
             </div>
+
             <div className="exp p-4 col">
               <h4>Education</h4>
               {profile?.education?.length === 0 ? (
@@ -133,7 +137,10 @@ const Profile = () => {
               )}
             </div>
           </div>
-          {repos.length !== 0 ? (
+
+          {repos.length === 0 ? (
+            ""
+          ) : (
             <div className="github col mt-5">
               <h4>Github Repos</h4>
               {repos.map((repo, index) => (
@@ -164,8 +171,6 @@ const Profile = () => {
                 </div>
               ))}
             </div>
-          ) : (
-            ""
           )}
         </>
       )}

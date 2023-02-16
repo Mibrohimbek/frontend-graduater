@@ -38,12 +38,6 @@ const AddEducation = () => {
       }
     }
 
-    async function test() {
-      let {data} = await axios.get('/profile/me')
-      console.log(data);
-    }
-
-    test()
     createEdu();
   }
   return (
