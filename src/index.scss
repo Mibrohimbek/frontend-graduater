@@ -2,15 +2,11 @@ body {
 
     #home {
         height: 100vh;
-        padding-top: 170px;
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position-y: 30px;
+        padding-top: 250px;
     }
 
     header {
         nav {
-            background-color: rgb(51, 55, 59);
             border-bottom: 1px solid aqua;
             padding: 8px 40px;
 
@@ -43,6 +39,7 @@ body {
 
     #sign-up,
     #sign-in {
+        padding-top: 80px;
         h3 {
             color: rgb(23, 162, 184);
         }
@@ -162,7 +159,7 @@ body {
         border: 1px solid rgb(195, 184, 184);
     }
 
-    thead{
+    thead {
         background-color: #f3f3f3;
     }
 
@@ -205,5 +202,15 @@ h3 {
 
     100% {
         transform: rotate(360deg);
+    }
+}
+
+
+@media screen and (max-width: 600px) {
+    nav {
+        .container-fluid {
+            padding: 0 10px !important;
+
+        }
     }
 }

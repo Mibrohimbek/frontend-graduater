@@ -17,6 +17,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.scss";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import 'bootstrap/js/src/offcanvas'
 
 // Redux
 import { Provider } from "react-redux";
