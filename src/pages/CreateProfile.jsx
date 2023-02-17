@@ -91,7 +91,7 @@ const CreateProfile = () => {
 
   return (
     <>
-      <div className="container create-profil">
+      <div className="container create-profile">
         <h3 className="text-center mt-5">Create Your Profile</h3>
         <h5 className="text-center mt-3 mb-4">
           Let's get some information to make your
@@ -108,7 +108,7 @@ const CreateProfile = () => {
               required
               id="status"
             >
-              {statuses.map((job) => (
+              {statuses?.map((job) => (
                 <option key={job} value={job}>
                   {job}
                 </option>
@@ -170,7 +170,7 @@ const CreateProfile = () => {
               username
             </p>
             <textarea
-              style={{ fontSize: "25px" }}
+              style={{ fontSize: "17px" }}
               className="p-3"
               name="bio"
               id="bio"
@@ -183,15 +183,15 @@ const CreateProfile = () => {
             <p>Tell us a little about yourself</p>
           </div>
 
-          <button type="button" className="mb-5 mt-4 border-0 px-4 py-3">
+          <button type="button" className="mt-4 border-0 px-4 me-4 mb-2 py-3">
             Add Social Network Links
           </button>
 
-          <p style={{ fontSize: "20px" }} className="d-inline-block ms-4">
+          <p style={{ fontSize: "20px" }} className="d-inline-block mb-5">
             Optional
           </p>
 
-          {social_medias.map((sm, index) => (
+          {social_medias?.map((sm, index) => (
             <div key={index} className="d-flex gap-4 mb-4">
               <img
                 src={sm.img}
@@ -209,11 +209,11 @@ const CreateProfile = () => {
             </div>
           ))}
 
-          <button className="send text-light px-5 py-2 mt-5" type="submit">
+          <button className="send cp-btn text-light px-5 py-2 me-2 mt-5 mb-3" type="submit">
             Send
           </button>
           <Link
-            className="back text-decoration-none text-dark ms-2 py-2 px-5"
+            className="back cp-btn text-center text-decoration-none text-dark py-2 px-5"
             to="/dashboard-create-profile"
           >
             Go Back

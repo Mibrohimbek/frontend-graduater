@@ -50,7 +50,7 @@ const Register = () => {
   return (
     <div id="sign-up" className="">
       <div className="container">
-        <h3 className="text-center mt-5 display-5 fw-normal">Sign Up</h3>
+        <h3 className="text-center display-5 fw-normal">Sign Up</h3>
         <h5 className="text-center mt-3">Create Your Account</h5>
 
         <form

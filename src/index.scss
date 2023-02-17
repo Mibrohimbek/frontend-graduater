@@ -6,9 +6,11 @@ body {
     }
 
     header {
+        margin-bottom: 100px;
         nav {
             border-bottom: 1px solid aqua;
             padding: 8px 40px;
+            background-color: black;
 
             .logo,
             .nav-item {
@@ -39,7 +41,7 @@ body {
 
     #sign-up,
     #sign-in {
-        padding-top: 80px;
+        padding-top: 25px;
         h3 {
             color: rgb(23, 162, 184);
         }
@@ -60,11 +62,12 @@ body {
     }
 
     #sign-in{
-        padding-top: 130px;
+        padding-top: 30px;
     }
 
-    .create-profil {
+    .create-profile {
         margin-bottom: 80px;
+        width: 55% ;
 
         .send {
             background-color: rgb(23, 162, 184);
@@ -91,7 +94,7 @@ body {
             font-size: 20px;
         }
 
-        .create-profil-btn {
+        .create-profile-btn {
             background-color: rgb(23, 162, 184);
             font-weight: 500;
             letter-spacing: 1px;
@@ -208,13 +211,21 @@ h3 {
         transform: rotate(360deg);
     }
 }
-
+@media screen and (max-width:376px){
+    .cp-btn{
+        display: block;
+        width: 100%;
+    }
+}
 
 @media screen and (max-width:991px){
     #sign-up,#sign-in{
         input{
             width: 100% !important;
         }
+    }
+    .create-profile{
+        width: 100% !important;
     }
 }
 

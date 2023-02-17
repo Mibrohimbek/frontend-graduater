@@ -41,7 +41,7 @@ const AddEducation = () => {
     createEdu();
   }
   return (
-    <div className="container create-profil">
+    <div className="container create-profile">
       <h3 className="text-center mt-5">Add Your Education</h3>
       <h5 className="text-center mt-3 mb-4">
         Add any school or bootcamp that you have attended

@@ -91,7 +91,7 @@ const EditProfile = () => {
 
   return (
     <>
-      <div className="container w-75 create-profil">
+      <div className="container w-75 create-profile">
         <h3 className="text-center mt-5">Edit Your Profile</h3>
         <h5 className="text-center mt-3 mb-4">
           Let's get some information to make your

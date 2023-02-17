@@ -24,7 +24,7 @@ const DashboardCreate = () => {
         You have not yet setup a profile, please add some info
       </p>
       <Link
-        className="create-profil-btn text-decoration-none text-light px-4 py-3 mt-4 d-inline-block"
+        className="create-profile-btn text-decoration-none text-light px-4 py-3 mt-4 d-inline-block"
         to="/create-profile"
       >
         Create Profile
