@@ -59,6 +59,10 @@ body {
         }
     }
 
+    #sign-in{
+        padding-top: 130px;
+    }
+
     .create-profil {
         margin-bottom: 80px;
 
@@ -205,6 +209,14 @@ h3 {
     }
 }
 
+
+@media screen and (max-width:991px){
+    #sign-up,#sign-in{
+        input{
+            width: 100% !important;
+        }
+    }
+}
 
 @media screen and (max-width: 600px) {
     nav {
