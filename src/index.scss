@@ -2,11 +2,11 @@ body {
 
     #home {
         height: 100vh;
-        padding-top: 250px;
+        padding-top: 230px;
     }
 
     header {
-        margin-bottom: 100px;
+        margin-bottom: 50px;
         nav {
             border-bottom: 1px solid aqua;
             padding: 8px 40px;
@@ -39,9 +39,12 @@ body {
         }
     }
 
+    #sign-up{
+        margin-top: 120px;
+    }
+
     #sign-up,
     #sign-in {
-        padding-top: 25px;
         h3 {
             color: rgb(23, 162, 184);
         }
@@ -65,7 +68,11 @@ body {
         padding-top: 30px;
     }
 
-    .create-profile {
+    .create-profile{
+        margin-top: 100px;
+    }
+
+    .create-profile,.add-exp,.add-edu {
         margin-bottom: 80px;
         width: 55% ;
 
@@ -90,6 +97,7 @@ body {
     }
 
     .dashboard-create {
+        margin-top: 170px;
         p {
             font-size: 20px;
         }

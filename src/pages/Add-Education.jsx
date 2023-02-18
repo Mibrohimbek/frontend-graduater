@@ -41,12 +41,12 @@ const AddEducation = () => {
     createEdu();
   }
   return (
-    <div className="container create-profile">
+    <div className="container add-edu">
       <h3 className="text-center mt-5">Add Your Education</h3>
       <h5 className="text-center mt-3 mb-4">
         Add any school or bootcamp that you have attended
       </h5>
-      <form onSubmit={handleFormSubmit} className="w-75 ms-auto me-auto">
+      <form onSubmit={handleFormSubmit} className="ms-auto me-auto">
         <p>* = required field</p>
         <div className="row m-0">
           <input

@@ -39,7 +39,7 @@ const AddExperience = () => {
 
   return (
     <>
-      <div className="container create-profile">
+      <div className="container add-exp">
         <h3 className="text-center mt-5">Add An Experience</h3>
         <h5 className="text-center mt-3 mb-4">
           Add any developer/programming positions that you have had in the past
