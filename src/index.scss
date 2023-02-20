@@ -1,50 +1,52 @@
-body {
+header {
+    nav {
+        border-bottom: 1px solid aqua;
+        padding: 8px 40px;
+        background-color: black;
 
-    #home {
-        height: 100vh;
-        padding-top: 230px;
-    }
-
-    header {
-        margin-bottom: 50px;
-        nav {
-            border-bottom: 1px solid aqua;
-            padding: 8px 40px;
-            background-color: black;
-
-            .logo,
-            .nav-item {
-                &:hover {
-                    color: rgb(23, 162, 184) !important;
-                    transition: .3s;
-                }
+        .logo,
+        .nav-item {
+            &:hover {
+                color: rgb(23, 162, 184) !important;
+                transition: .3s;
             }
+        }
 
-            .logout-btn:hover {
-                color: red !important;
-                background: none !important;
-                transition: .2s;
-            }
+        .logout-btn:hover {
+            color: red !important;
+            background: none !important;
+            transition: .2s;
+        }
 
 
-            .left {
-                font-size: 2rem;
-            }
+        .left {
+            font-size: 2rem;
+        }
 
-            .right {
-                li {
-                    font-size: 18px;
-                }
+        .right {
+            li {
+                font-size: 18px;
             }
         }
     }
+}
 
-    #sign-up{
-        margin-top: 120px;
+#home {
+    height: 100vh;
+    padding-top: 260px;
+}
+
+#sign {
+    &-up {
+        margin-top: 140px;
     }
 
-    #sign-up,
-    #sign-in {
+    &-in {
+        margin-top: 170px;
+    }
+
+    &-in,
+    &-up {
         h3 {
             color: rgb(23, 162, 184);
         }
@@ -63,73 +65,18 @@ body {
             color: rgb(23, 162, 184);
         }
     }
+}
 
-    #sign-in{
-        padding-top: 30px;
-    }
-
-    .create-profile{
-        margin-top: 100px;
-    }
-
-    .create-profile,.add-exp,.add-edu {
-        margin-bottom: 80px;
-        width: 55% ;
-
-        .send {
-            background-color: rgb(23, 162, 184);
-            border: none;
-            letter-spacing: 5px;
-            font-size: 20px;
-        }
-
-        .back {
-            background-color: #f4f4f4;
-            font-size: 20px;
-        }
-
-        .send,
-        .back {
-            &:hover {
-                opacity: 0.7;
-            }
-        }
-    }
-
-    .dashboard-create {
-        margin-top: 170px;
-        p {
-            font-size: 20px;
-        }
-
-        .create-profile-btn {
-            background-color: rgb(23, 162, 184);
-            font-weight: 500;
-            letter-spacing: 1px;
-        }
-    }
-
-    .dashboard-links {
-        background-color: #f4f4f4;
-        margin-right: 10px;
-    }
+#developers {
+    margin-top: 100px;
 
     .vp-btn {
         background-color: rgb(23, 162, 184);
         padding: 10px 20px;
     }
+}
 
-    .post-date {
-        color: gray;
-        font-size: 14px;
-    }
-
-    .dsc-btn {
-        background-color: rgb(23, 162, 184);
-        padding: 10px;
-
-    }
-
+#profile {
     .user-main-info {
         background-color: rgb(23, 162, 184);
         padding-bottom: 60px;
@@ -145,22 +92,12 @@ body {
         }
     }
 
-    .edu-exp,
-    .github,
-    .user-bio {
-        h4 {
-            color: rgb(23, 162, 184);
-            font-size: 30px;
-        }
-    }
-
     .repo-name {
         color: rgb(23, 162, 184);
         font-size: 20px;
     }
 
-    .repo-stars,
-    .bg-main {
+    .repo-stars {
         background-color: rgb(23, 162, 184);
     }
 
@@ -168,19 +105,90 @@ body {
         background-color: #f3f3f3;
         border: 1px solid rgb(75, 72, 72);
     }
+}
 
-    .exp,
-    .edu {
-        border: 1px solid rgb(195, 184, 184);
+.create-profile,
+.add-exp,
+.add-edu,
+.edit-profile {
+    margin-top: 100px;
+    margin-bottom: 80px;
+    width: 60%;
+
+    .send {
+        background-color: rgb(23, 162, 184);
+        border: none;
+        letter-spacing: 5px;
+        font-size: 20px;
     }
 
-    thead {
-        background-color: #f3f3f3;
+    .back {
+        background-color: #f4f4f4;
+        font-size: 20px;
     }
 
+    .send,
+    .back {
+        &:hover {
+            opacity: 0.7;
+        }
+    }
+}
+
+#dashboard {
+    margin-top: 100px;
+
+    .dashboard-links {
+        background-color: #f4f4f4;
+        margin-right: 10px;
+    }
+}
+
+#dashboard-create {
+    margin-top: 170px;
+
+    p {
+        font-size: 20px;
+    }
+
+    .create-profile-btn {
+        background-color: rgb(23, 162, 184);
+        font-weight: 500;
+        letter-spacing: 1px;
+    }
+}
 
 
+.post-date {
+    color: gray;
+    font-size: 14px;
+}
 
+.dsc-btn {
+    background-color: rgb(23, 162, 184);
+    padding: 10px;
+}
+
+.edu-exp,
+.github,
+.user-bio {
+    h4 {
+        color: rgb(23, 162, 184);
+        font-size: 30px;
+    }
+}
+
+.bg-main {
+    background-color: rgb(23, 162, 184);
+}
+
+.exp,
+.edu {
+    border: 1px solid rgb(195, 184, 184);
+}
+
+thead {
+    background-color: #f3f3f3;
 }
 
 h3 {
@@ -188,7 +196,6 @@ h3 {
     font-size: 3rem;
 }
 
-// loader
 .loader {
     border: 16px solid #f3f3f3;
     border-radius: 50%;
@@ -197,7 +204,7 @@ h3 {
     height: 120px;
     -webkit-animation: spin 2s linear infinite;
     animation: spin 2s linear infinite;
-    margin-top: 250px;
+    margin-top: 300px;
 }
 
 @-webkit-keyframes spin {
@@ -219,21 +226,11 @@ h3 {
         transform: rotate(360deg);
     }
 }
-@media screen and (max-width:376px){
-    .cp-btn{
+
+@media screen and (max-width:376px) {
+    .cp-btn {
         display: block;
         width: 100%;
-    }
-}
-
-@media screen and (max-width:991px){
-    #sign-up,#sign-in{
-        input{
-            width: 100% !important;
-        }
-    }
-    .create-profile{
-        width: 100% !important;
     }
 }
 
@@ -241,7 +238,40 @@ h3 {
     nav {
         .container-fluid {
             padding: 0 10px !important;
+        }
+    }
+}
+
+@media screen and (max-width:767px) {
+    #developers {
+        .developer {
+            display: block !important;
+            text-align: center;
 
         }
+
+        .skills {
+            margin-top: 15px;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .dev-avatar {
+            width: 45% !important;
+        }
+    }
+}
+
+@media screen and (max-width:991px) {
+
+    #sign-up,
+    #sign-in {
+        input {
+            width: 100% !important;
+        }
+    }
+
+    .create-profile {
+        width: 100% !important;
     }
 }

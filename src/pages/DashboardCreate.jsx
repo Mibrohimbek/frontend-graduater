@@ -17,7 +17,7 @@ const DashboardCreate = () => {
   getName();
 
   return (
-    <div className="dashboard-create text-center">
+    <div id="dashboard-create" className="text-center">
       <h3 className="text-center display-2 fw-normal mt-5 mb-3">Dashboard</h3>
       <h5 className="text-center display-4"> Welcome {username?.name}</h5>
       <p className="text-center mt-4">

@@ -57,7 +57,7 @@ const Dashboard = () => {
   }
 
   return (
-    <div>
+    <div id="dashboard">
       <div className="container">
         <h3 className="display-3 fw-bold mt-5">Dashboard</h3>
         <p className="mt-3 display-6"> Welcome {myInfo?.user?.name}</p>

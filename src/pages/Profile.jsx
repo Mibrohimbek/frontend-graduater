@@ -36,7 +36,7 @@ const Profile = () => {
           <div className="loader ms-auto me-auto"></div>
         </div>
       ) : (
-        <>
+        <div id="profile">
           <Link
             to="/profiles"
             style={{ backgroundColor: "#f3f3f3" }}
@@ -140,7 +140,7 @@ const Profile = () => {
           ) : (
             <div className="github col mt-5">
               <h4>Github Repos</h4>
-              {repos?.map((repo, index) => (
+              {repos.map((repo, index) => (
                 <div
                   key={index}
                   className="d-flex justify-content-between border px-4 py-3 mt-3 pb-0"
@@ -169,7 +169,7 @@ const Profile = () => {
               ))}
             </div>
           )}
-        </>
+        </div>
       )}
     </div>
   );

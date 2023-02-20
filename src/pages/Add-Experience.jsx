@@ -44,7 +44,7 @@ const AddExperience = () => {
         <h5 className="text-center mt-3 mb-4">
           Add any developer/programming positions that you have had in the past
         </h5>
-        <form onSubmit={handleFormSubmit} className="w-75 ms-auto me-auto">
+        <form onSubmit={handleFormSubmit} className="ms-auto me-auto">
           <p>* = required field</p>
           <div className="row m-0">
             <input
